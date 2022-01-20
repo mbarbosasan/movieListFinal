@@ -1,0 +1,33 @@
+.navbar, .navbar-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: .750em;
+}
+
+.navbar-list li, .navbar-list button {
+  margin-left: 2em;
+  font-size: 1.2em;
+  font-family: 'Red Hat Text', monospace;
+}
+
+.navbar-list li {
+  font-weight: 400;
+}
+
+.navbar-list button {
+  font-weight: 700;
+  padding: 5px;
+  border-style: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: #000;
+}
+
+

@@ -1,0 +1,88 @@
+.login-container {
+  display: none;
+}
+
+
+.login-container.active {
+  display: block;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  z-index: 1000;
+  background-color: tomato;
+  width: 350px;
+  height: 350px;
+  border-radius: 20px;
+  transition: .5s ease;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Red Hat Text';
+}
+
+.login-box button {
+  font-family: 'Red Hat Text';
+  font-size: 1rem;
+  height: 25px;
+  margin: 10px 0px 10px 0px;
+  border-radius: 5px;
+  border-style: none;
+  cursor: pointer;
+}
+
+.login-box label {
+  display: block;
+  margin-top: 10px;
+}
+
+.register-form, .login-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 1.1em;
+}
+
+.register-form input, .login-form input {
+  font-size: .775em;
+  border-style: none;
+  border-radius: 10px;
+  font-family: 'Red Hat Text';
+  text-align: center;
+  width: 250px;
+}
+
+.options-form p {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.options-form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 10px 0px 10px 0px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.signup-option.active, .login-option.active {
+  background-color: brown;
+  color: white;
+  transition: .1s ease;
+}
+
+.login-form.deactive {
+  display: none;
+}
+
+.register-form.deactive {
+  display: none;
+}
+
+.help-option {
+  text-align: center;
+}

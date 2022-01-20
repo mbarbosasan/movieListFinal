@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&family=Red+Hat+Text:wght@400;500;700&display=swap');
+@import url(./css/navbar.css);
+@import url(./css/main-container.css);
+@import url(./css/login-container.css);
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+h2::first-letter {
+  color: tomato;
+}
+
+
+.main-container.active {
+  opacity: 0.5;
+}
