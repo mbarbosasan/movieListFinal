@@ -1,0 +1,19 @@
+.trendingTV {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+
+}
+
+.trendingTV div {
+  margin-left: 20px;
+}
+
+.trendingTV img {
+  border-radius: 20px;
+}
+
+.titles {
+  font-family: 'Red Hat Text';
+  font-size: 1.5rem;
+}
