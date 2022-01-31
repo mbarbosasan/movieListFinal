@@ -78,3 +78,10 @@ fetch(url)
     })
   })
 
+  tvMovieImage.forEach((movie) => {
+    movie.addEventListener('click', () => {
+      movie.classList.toggle('active')
+      console.log('oi')
+    })
+  })
+

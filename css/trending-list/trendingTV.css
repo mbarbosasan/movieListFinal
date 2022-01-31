@@ -6,14 +6,23 @@
 }
 
 .trendingTV div {
-  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .trendingTV img {
   border-radius: 20px;
+  cursor: pointer;
 }
 
+.trendingTV img.active {
+  opacity: .5;
+}
 .titles {
-  font-family: 'Red Hat Text';
+  font-family: 'Mochiy Pop P One', sans-serif;
   font-size: 1.5rem;
+  padding: 10px;
+}
+
+.titles::first-letter {
+  color: red;
 }

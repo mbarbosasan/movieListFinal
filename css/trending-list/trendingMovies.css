@@ -1,13 +1,19 @@
 .trendingMovies {
   display: flex;
-  width: 95vw;
+  align-items: center;
   overflow-x: scroll;
+  width: 95vw;
 }
 
 .trendingMovies div {
-  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .trendingMovies img {
   border-radius: 20px;
+  cursor: pointer;
+}
+
+.trendingMovies img.active {
+  opacity: 0.5;
 }
