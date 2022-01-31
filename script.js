@@ -60,9 +60,6 @@ fetch(url)
     let i = 0;
     tvMovieImage.forEach((movie) => {
       movie.setAttribute("src", `${pathName}${json.results[i].poster_path}`);
-      // console.log(tvMovieImage[i])
-      console.log(json.results);
-      console.log(`${pathName}${json.results[i].poster_path}`);
       i++;
     });
   });
