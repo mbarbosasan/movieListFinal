@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   overflow-x: scroll;
-
+  width: 95vw;
 }
 
 .trendingTV div {

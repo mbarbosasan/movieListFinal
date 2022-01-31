@@ -1,0 +1,13 @@
+.trendingMovies {
+  display: flex;
+  width: 95vw;
+  overflow-x: scroll;
+}
+
+.trendingMovies div {
+  margin-left: 20px;
+}
+
+.trendingMovies img {
+  border-radius: 20px;
+}

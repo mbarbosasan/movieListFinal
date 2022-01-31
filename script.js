@@ -50,10 +50,10 @@ function registerButton(event) {
 
 const apiKey = "7163d507a975c5833a02e7ea696637bd";
 const pathName = "https://image.tmdb.org/t/p/w200";
-const tvMovieImage = document.querySelectorAll(".TvMovieImage");
+const tvMovieImage = document.querySelectorAll(".TvImage");
 const tvStreaming = document.querySelectorAll(".TvStreaming");
 
-const url = `https://api.themoviedb.org/3/trending/all/week?api_key=${apiKey}`;
+const url = `https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}`;
 fetch(url)
   .then((response) => response.json())
   .then((json) => {
@@ -63,4 +63,18 @@ fetch(url)
       i++;
     });
   });
+
+  const movieImage = document.querySelectorAll('.MovieImage')
+  const movieStreaming = document.querySelectorAll('.MovieStreaming')
+
+  const urlMovies = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`
+  fetch(urlMovies)
+  .then(response => response.json())
+  .then(json => {
+    let i = 0;
+    movieImage.forEach((movie) => {
+      movie.setAttribute('src', `${pathName}${json.results[i].poster_path}`);
+      i++
+    })
+  })
 
