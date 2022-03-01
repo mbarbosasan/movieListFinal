@@ -35,3 +35,13 @@
   border-radius: 10px;
   border-style: none;
 }
+/* Apenas titulos da seção de filmes */
+.titles {
+  font-family: 'Mochiy Pop P One', sans-serif;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+
+.titles::first-letter {
+  color: red;
+}

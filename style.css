@@ -2,8 +2,7 @@
 @import url(./css/navbar.css);
 @import url(./css/main-container.css);
 @import url(./css/login-container.css);
-@import url(./css/trending-list/trendingTV.css);
-@import url(./css/trending-list/trendingMovies.css);
+@import url(/css/trendingList.css);
 
 * {
   margin: 0px;
@@ -22,11 +21,4 @@ h2::first-letter {
 
 .main-container.active {
   opacity: 0.5;
-}
-
-.trending-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }

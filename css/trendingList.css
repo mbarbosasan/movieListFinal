@@ -1,0 +1,18 @@
+
+.trending-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.trendingMovies, .trendingTV {
+  width: 95vw;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.trendingMovies img, .trendingTV img {
+  border-radius: 20px;
+  margin: 0px 0px 10px 10px;
+}
