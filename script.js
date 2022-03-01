@@ -7,7 +7,7 @@ const loginForm = document.querySelector(".login-form");
 const registerForm = document.querySelector(".register-form");
 const loginOption = document.querySelector(".login-option");
 const signupOption = document.querySelector(".signup-option");
-const myList = document.querySelector('.myList');
+const myList = document.querySelector(".myList");
 
 function changeOptionLogin(event) {
   event.preventDefault();
@@ -51,48 +51,82 @@ signupOption.addEventListener("click", changeOptionRegister);
 async function fetchMovies() {
   const movieTrendingSection = document.querySelector(".trendingMovies");
   const tvTrendingSection = document.querySelector(".trendingTV");
-  
-  
-    try { 
+
+  try {
     const apiKey = "7163d507a975c5833a02e7ea696637bd";
     const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`;
     const pathName = "https://image.tmdb.org/t/p/w200";
     const response = await fetch(url);
     const json = await response.json();
     json.results.forEach((movie) => {
-      createCard(movieTrendingSection, 'trendingSeries', 'src', `${pathName}${movie.poster_path}`);
-    }) }
-    catch (error) {
-      const errorMessage = document.createElement('p');
-      errorMessage.innerText = 'Infelizmente tivemos um problema, você tentar recarregar a página ou tentar novamente mais tarde.'
-      movieTrendingSection.appendChild(errorMessage);
-    }
+      createCard(
+        movieTrendingSection,
+        "trendingSeries",
+        "src",
+        `${pathName}${movie.poster_path}`
+      );
+    });
+  } catch (error) {
+    const errorMessage = document.createElement("p");
+    errorMessage.innerText =
+      "Infelizmente tivemos um problema, você tentar recarregar a página ou tentar novamente mais tarde.";
+    movieTrendingSection.appendChild(errorMessage);
+  }
 
-    try {
-      const apiKey = "7163d507a975c5833a02e7ea696637bd";
-      const url = `https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}`
-      const pathName = "https://image.tmdb.org/t/p/w200";
+  try {
+    const apiKey = "7163d507a975c5833a02e7ea696637bd";
+    const url = `https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}`;
+    const pathName = "https://image.tmdb.org/t/p/w200";
 
-      const response = await fetch(url);
-      const json = await response.json();
-      console.log(json);
-      json.results.forEach((tv) => {
-        createCard(tvTrendingSection, 'trendingSeries', 'src', `${pathName}${tv.poster_path}`);
-      })
-    } catch (error) {
-      const errorMessage = document.createElement('p');
-      errorMessage.innerText = 'Infelizmente tivemos um problema, você tentar recarregar a página ou tentar novamente mais tarde.'
-      movieTrendingSection.appendChild(errorMessage);
-    }
-
+    const response = await fetch(url);
+    const json = await response.json();
+    json.results.forEach((tv) => {
+      createCard(
+        tvTrendingSection,
+        "trendingSeries",
+        "src",
+        `${pathName}${tv.poster_path}`
+      );
+    });
+  } catch (error) {
+    const errorMessage = document.createElement("p");
+    errorMessage.innerText =
+      "Infelizmente tivemos um problema, você tentar recarregar a página ou tentar novamente mais tarde.";
+    movieTrendingSection.appendChild(errorMessage);
+  }
 }
 
+
+
+
 function createCard(wrapper, className, tagName, tagAttribute) {
-  const movie = document.createElement('img')
+  const movie = document.createElement("img");
   movie.classList.add(className);
   movie.setAttribute(tagName, tagAttribute);
   wrapper.appendChild(movie);
-  return movie;  
+  return movie;
 }
 
 fetchMovies();
+
+setTimeout(() => {
+  const trendingSeries = document.querySelectorAll('.trendingSeries');
+  trendingSeries.forEach((item) => {
+    item.addEventListener('click', addMyList)
+  })
+  }, 1000)
+
+function addMyList(event) {
+  event.target.classList.remove('.trendingSeries')
+  event.target.classList.add('myListSeries');
+  event.target.removeEventListener('click', addMyList);
+  myList.appendChild(event.target);
+  const myListSeries = document.querySelectorAll('.myListSeries');
+  myListSeries.forEach((series) => {
+    series.addEventListener('click', removeMyList)
+  })
+}
+
+function removeMyList(event) {
+  event.target.remove();
+}
