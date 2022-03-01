@@ -96,33 +96,3 @@ function createCard(wrapper, className, tagName, tagAttribute) {
 }
 
 fetchMovies();
-// fetch(url)
-//   .then((response) => response.json())
-//   .then((json) => {
-//     let i = 0;
-//     tvMovieImage.forEach((movie) => {
-//       movie.setAttribute("src", `${pathName}${json.results[i].poster_path}`);
-//       i++;
-//     });
-//   });
-
-//   const movieImage = document.querySelectorAll('.MovieImage')
-//   const movieStreaming = document.querySelectorAll('.MovieStreaming')
-
-//   const urlMovies = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`
-//   fetch(urlMovies)
-//   .then(response => response.json())
-//   .then(json => {
-//     let i = 0;
-//     movieImage.forEach((movie) => {
-//       movie.setAttribute('src', `${pathName}${json.results[i].poster_path}`);
-//       i++
-//     })
-//   })
-
-//   tvMovieImage.forEach((movie) => {
-//     movie.addEventListener('click', () => {
-//       movie.classList.toggle('active')
-//       console.log('oi')
-//     })
-//   })
