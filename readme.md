@@ -10,10 +10,8 @@ O desafio será criar uma galeria de filmes/séries onde o usuário consiga se c
 
 Como o foco não está no CSS/HTML e sim no JavaScript, a paleta de cores ainda não foi definida mas pretendo ir melhorando com o tempo.
 
-## **Previews**
+## **Live Site**
 
-![Inicio](previews/preview.png)
-![LoginModal](previews/previewmodallogin.png)
-![RegisterModal](previews/previewmodalregister.png)
+[Here](https://mbarbosasan.github.io/movieListFinal/)
 
 ###### PS: Até então mantenho o projeto em inglês pra colocar em prática o inglês, tanto os métodos quanto o conteúdo do site, 

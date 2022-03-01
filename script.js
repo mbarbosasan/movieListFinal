@@ -7,12 +7,7 @@ const loginForm = document.querySelector(".login-form");
 const registerForm = document.querySelector(".register-form");
 const loginOption = document.querySelector(".login-option");
 const signupOption = document.querySelector(".signup-option");
-
-//event listener
-signupbutton.addEventListener("click", registerButton);
-loginbutton.addEventListener("click", loginButton);
-loginOption.addEventListener("click", changeOptionLogin);
-signupOption.addEventListener("click", changeOptionRegister);
+const myList = document.querySelector('.myList');
 
 function changeOptionLogin(event) {
   event.preventDefault();
@@ -47,34 +42,87 @@ function registerButton(event) {
   loginForm.classList.toggle("deactive");
   signupOption.classList.toggle("active");
 }
+//event listener
+signupbutton.addEventListener("click", registerButton);
+loginbutton.addEventListener("click", loginButton);
+loginOption.addEventListener("click", changeOptionLogin);
+signupOption.addEventListener("click", changeOptionRegister);
 
-const apiKey = "7163d507a975c5833a02e7ea696637bd";
-const pathName = "https://image.tmdb.org/t/p/w200";
-const tvMovieImage = document.querySelectorAll(".TvImage");
-const tvStreaming = document.querySelectorAll(".TvStreaming");
+async function fetchMovies() {
+  const movieTrendingSection = document.querySelector(".trendingMovies");
+  const tvTrendingSection = document.querySelector(".trendingTV");
+  
+  
+    try { 
+    const apiKey = "7163d507a975c5833a02e7ea696637bd";
+    const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`;
+    const pathName = "https://image.tmdb.org/t/p/w200";
+    const response = await fetch(url);
+    const json = await response.json();
+    json.results.forEach((movie) => {
+      createCard(movieTrendingSection, 'trendingSeries', 'src', `${pathName}${movie.poster_path}`);
+    }) }
+    catch (error) {
+      const errorMessage = document.createElement('p');
+      errorMessage.innerText = 'Infelizmente tivemos um problema, você tentar recarregar a página ou tentar novamente mais tarde.'
+      movieTrendingSection.appendChild(errorMessage);
+    }
 
-const url = `https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}`;
-fetch(url)
-  .then((response) => response.json())
-  .then((json) => {
-    let i = 0;
-    tvMovieImage.forEach((movie) => {
-      movie.setAttribute("src", `${pathName}${json.results[i].poster_path}`);
-      i++;
-    });
-  });
+    try {
+      const apiKey = "7163d507a975c5833a02e7ea696637bd";
+      const url = `https://api.themoviedb.org/3/trending/tv/week?api_key=${apiKey}`
+      const pathName = "https://image.tmdb.org/t/p/w200";
 
-  const movieImage = document.querySelectorAll('.MovieImage')
-  const movieStreaming = document.querySelectorAll('.MovieStreaming')
+      const response = await fetch(url);
+      const json = await response.json();
+      console.log(json);
+      json.results.forEach((tv) => {
+        createCard(tvTrendingSection, 'trendingSeries', 'src', `${pathName}${tv.poster_path}`);
+      })
+    } catch (error) {
+      const errorMessage = document.createElement('p');
+      errorMessage.innerText = 'Infelizmente tivemos um problema, você tentar recarregar a página ou tentar novamente mais tarde.'
+      movieTrendingSection.appendChild(errorMessage);
+    }
 
-  const urlMovies = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`
-  fetch(urlMovies)
-  .then(response => response.json())
-  .then(json => {
-    let i = 0;
-    movieImage.forEach((movie) => {
-      movie.setAttribute('src', `${pathName}${json.results[i].poster_path}`);
-      i++
-    })
-  })
+}
 
+function createCard(wrapper, className, tagName, tagAttribute) {
+  const movie = document.createElement('img')
+  movie.classList.add(className);
+  movie.setAttribute(tagName, tagAttribute);
+  wrapper.appendChild(movie);
+  return movie;  
+}
+
+fetchMovies();
+// fetch(url)
+//   .then((response) => response.json())
+//   .then((json) => {
+//     let i = 0;
+//     tvMovieImage.forEach((movie) => {
+//       movie.setAttribute("src", `${pathName}${json.results[i].poster_path}`);
+//       i++;
+//     });
+//   });
+
+//   const movieImage = document.querySelectorAll('.MovieImage')
+//   const movieStreaming = document.querySelectorAll('.MovieStreaming')
+
+//   const urlMovies = `https://api.themoviedb.org/3/trending/movie/week?api_key=${apiKey}`
+//   fetch(urlMovies)
+//   .then(response => response.json())
+//   .then(json => {
+//     let i = 0;
+//     movieImage.forEach((movie) => {
+//       movie.setAttribute('src', `${pathName}${json.results[i].poster_path}`);
+//       i++
+//     })
+//   })
+
+//   tvMovieImage.forEach((movie) => {
+//     movie.addEventListener('click', () => {
+//       movie.classList.toggle('active')
+//       console.log('oi')
+//     })
+//   })
