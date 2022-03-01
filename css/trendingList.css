@@ -6,13 +6,15 @@
   flex-direction: column;
 }
 
-.trendingMovies, .trendingTV {
+.trendingMovies, .myList, .trendingTV {
   width: 95vw;
   display: flex;
   overflow-x: scroll;
 }
 
-.trendingMovies img, .trendingTV img {
+.trendingMovies img, .myList img, .trendingTV img {
   border-radius: 20px;
   margin: 0px 0px 10px 10px;
+  cursor: pointer;
 }
+
