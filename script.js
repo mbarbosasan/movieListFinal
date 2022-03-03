@@ -61,7 +61,7 @@ async function fetchMovies() {
     json.results.forEach((movie) => {
       createCard(
         movieTrendingSection,
-        "trendingSeries",
+        "trendingMovie",
         "src",
         `${pathName}${movie.poster_path}`
       );
@@ -96,9 +96,6 @@ async function fetchMovies() {
   }
 }
 
-
-
-
 function createCard(wrapper, className, tagName, tagAttribute) {
   const movie = document.createElement("img");
   movie.classList.add(className);
@@ -110,21 +107,22 @@ function createCard(wrapper, className, tagName, tagAttribute) {
 fetchMovies();
 
 setTimeout(() => {
-  const trendingSeries = document.querySelectorAll('.trendingSeries');
+  let trendingSeries = document.querySelectorAll(".trendingSeries");
   trendingSeries.forEach((item) => {
-    item.addEventListener('click', addMyList)
-  })
-  }, 1000)
+    item.addEventListener("click", addMyList);
+  });
+}, 1000);
 
 function addMyList(event) {
-  event.target.classList.remove('.trendingSeries')
-  event.target.classList.add('myListSeries');
-  event.target.removeEventListener('click', addMyList);
-  myList.appendChild(event.target);
-  const myListSeries = document.querySelectorAll('.myListSeries');
-  myListSeries.forEach((series) => {
-    series.addEventListener('click', removeMyList)
-  })
+  const myListSeries = document.querySelectorAll(".myListSeries");
+  if (  [...myListSeries].every((serie) => serie.getAttribute('src') != event.target.getAttribute('src'))) {
+    const myListImg = createCard(myList, "myListSeries", "src", event.target.getAttribute("src"));
+    myList.appendChild(myListImg);
+    myListSeries.forEach((series) => {
+      series.addEventListener("dblclick", removeMyList);
+      series.removeEventListener('click', addMyList);
+    });
+  }
 }
 
 function removeMyList(event) {
