@@ -16,9 +16,8 @@ Como o foco não está no CSS/HTML e sim no JavaScript, a paleta de cores ainda 
 
 ## **Problemas**
 
-* O item ao ser adicionado está sendo removido da seção anterior, ainda não consegui descobrir como clonar um elemento do DOM que retorna de um EventListener uma vez que não existe o método de CloneNode e esse por sua vez remove o item da lista anterior para adicionar na nova.
-
-###### https://developer.mozilla.org/pt-BR/docs/Web/API/Node/cloneNode
+* O item ao ser adicionado está sendo removido da seção anterior, ainda não consegui descobrir como clonar um elemento do DOM que retorna de um EventListener uma vez que não existe o método de CloneNode e esse por sua vez remove o item da lista anterior para adicionar na nova. (RESOLVIDO)
+* O eventListener de exclusão do item da minhaLista não está funcionando corretamente, precisa clicar em outro item e depois no item que deseja excluir para a função remover o item corretamente.
 
 ## **Live Site**
 
