@@ -106,6 +106,7 @@ function createCard(wrapper, className, tagName, tagAttribute) {
 
 fetchMovies();
 
+
 setTimeout(() => {
   let trendingSeries = document.querySelectorAll(".trendingSeries");
   trendingSeries.forEach((item) => {
@@ -114,15 +115,16 @@ setTimeout(() => {
 }, 1000);
 
 function addMyList(event) {
-  const myListSeries = document.querySelectorAll(".myListSeries");
-  if (  [...myListSeries].every((serie) => serie.getAttribute('src') != event.target.getAttribute('src'))) {
+  const listaAnterior = document.querySelectorAll(".myListSeries");
+  if ([...listaAnterior].every((serie) => serie.getAttribute('src') != event.target.getAttribute('src'))) {
     const myListImg = createCard(myList, "myListSeries", "src", event.target.getAttribute("src"));
     myList.appendChild(myListImg);
-    myListSeries.forEach((series) => {
-      series.addEventListener("dblclick", removeMyList);
-      series.removeEventListener('click', addMyList);
-    });
   }
+  const myListSeries = document.querySelectorAll(".myListSeries");
+  myListSeries.forEach((series) => {
+    series.removeEventListener('click', addMyList);
+    series.addEventListener('click', removeMyList);
+  });
 }
 
 function removeMyList(event) {
